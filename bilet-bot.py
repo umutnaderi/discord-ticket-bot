@@ -23,8 +23,9 @@ def load_previous_items():
         return []  # Return an empty list if the file doesn't exist
 
 def save_items(items):
-    with open(filename, 'w') as file:
-        json.dumps(items, filename, indent=4, ensure_ascii=False)
+    filename = 'previous_items.json'  # The path to your JSON file
+    with open(filename, 'w', encoding='utf-8') as file:
+        json.dump(items, file, indent=4, ensure_ascii=False)
 
 
 # Function to scrape the website
