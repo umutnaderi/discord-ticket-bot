@@ -52,7 +52,7 @@ async def scrape_website():
 # Function to check for updates and send messages
 async def check_for_updates():
     await client.wait_until_ready()
-    channel = client.get_channel(1177889463163174982)  # Replace with your channel ID
+    channel = client.get_channel(0000)  # Replace with your channel ID
     previous_items = load_previous_items()
 
 
@@ -73,9 +73,9 @@ async def check_for_updates():
 @client.event
 async def on_ready():
     print(f'Logged in as {client.user}')
-    greeting_channel = client.get_channel(1177889463163174982)  # Replace with your channel ID
+    greeting_channel = client.get_channel(0000)  # Replace with your channel ID
     await greeting_channel.send('Hello! I am up and running!')
 
 # Run the bot
 client.loop.create_task(check_for_updates())
-client.run('MTE3Nzg5MDEyMDUxNTQ3MzQyOA.GvjJ9P.CKFJR8rh59xy4tZYcXklZOIev0OFfV6DcBjpX0')  # Replace with your bot token
+client.run('#####')  # Replace with your bot token
