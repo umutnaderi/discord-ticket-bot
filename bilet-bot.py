@@ -52,10 +52,10 @@ async def scrape_website():
 # Function to check for updates and send messages
 async def check_for_updates():
     await client.wait_until_ready()
-    channel = client.get_channel(0000)  # Replace with your channel ID
-    previous_items = load_previous_items()
+    channel = client.get_channel(000)  # Replace with your channel ID
 
     while not client.is_closed():
+        previous_items = load_previous_items()
         current_items = await scrape_website()
         new_items = [item for item in current_items if item not in previous_items]
 
@@ -64,16 +64,15 @@ async def check_for_updates():
                 message = f'**Lig {item["lig"]}**: {item["text"]} \n{item["img_url"]}'
                 await channel.send(message)
                 
-
         save_items(current_items)
         await asyncio.sleep(1800)  # Run every 1/2 hour
 
 @client.event
 async def on_ready():
     print(f'Logged in as {client.user}')
-    greeting_channel = client.get_channel(0000)  # Replace with your channel ID
+    greeting_channel = client.get_channel(000)  # Replace with your channel ID
     await greeting_channel.send('Hello! I am up and running!')
 
 # Run the bot
 client.loop.create_task(check_for_updates())
-client.run('####')  # Replace with your bot token
+client.run('###')  # Replace with your bot token
