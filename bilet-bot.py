@@ -17,7 +17,7 @@ headers = {
 # Function to load previously scraped items
 def load_previous_items():
     try:
-        with open(filename, 'r') as file:
+        with open(filename, 'r', encoding='utf-8') as file:
             return json.load(file)
     except FileNotFoundError:
         return []  # Return an empty list if the file doesn't exist
@@ -36,7 +36,6 @@ async def scrape_website():
         soup = BeautifulSoup(response.text, 'html.parser')
         targeted_ligs = {'117', '156', '157'}
         items = soup.find_all('li', {'data-lig': lambda x: x in targeted_ligs})
-        
         result = []
         
         for item in items:
@@ -55,8 +54,6 @@ async def check_for_updates():
     await client.wait_until_ready()
     channel = client.get_channel(0000)  # Replace with your channel ID
     previous_items = load_previous_items()
-
-
 
     while not client.is_closed():
         current_items = await scrape_website()
@@ -79,4 +76,4 @@ async def on_ready():
 
 # Run the bot
 client.loop.create_task(check_for_updates())
-client.run('#####')  # Replace with your bot token
+client.run('####')  # Replace with your bot token
